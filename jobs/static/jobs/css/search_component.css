@@ -1,0 +1,36 @@
+.btn-search {
+    background-color: var(--primary-color);
+    border-radius: 5px !important;
+    color: white;
+    font-weight: 600;
+    display: none;
+}
+.mobile {
+    display: block;
+    border-radius: 5px !important;
+    width: 100%;
+}
+.btn-search:hover {
+    border: 1px solid var(--primary-color);
+    border-left: none; 
+}
+.input-search {
+    border-radius: 5px 0 0 5px;
+}
+#jobSearchForm .form-control {
+    border-color: var(--secondary-color);
+}
+@media (min-width: 600px) {
+    .btn-search {
+        display: block;
+        border-radius: 0 5px 5px 0 !important;
+    }
+    .mobile {
+        display: none;
+    }
+}
+#advancedFilters {
+    transition: height 0.3s ease-in-out; /* Add transition for height */
+  }
+  
+

@@ -1,0 +1,24 @@
+{% extends 'employ_boilerplate.html' %}
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'jobs/css/about.css' %}">
+{% endblock head %}
+{% load i18n %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row ">
+        <div class="col-md-6">
+            <h2>{% trans "About Employ" %}</h2>
+            <p>
+                {% trans "Employ is a leading platform for connecting job seekers with employers. Our mission is to make job searching easy and accessible for everyone, providing a seamless experience from job discovery to application." %}
+            </p>
+            <p>
+                {% trans "At Employ, we understand the challenges faced by both job seekers and employers in the hiring process. That's why we're committed to leveraging technology to streamline the job search process, making it faster, more efficient, and ultimately more successful for all parties involved." %}
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'jobs/images/logo.png' %}" alt="About Employ" class="img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock %}

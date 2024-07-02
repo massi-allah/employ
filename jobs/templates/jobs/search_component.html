@@ -1,0 +1,46 @@
+{% load i18n %}{% load static %}
+<link rel="stylesheet" href="{% static 'jobs/css/search_component.css' %}">
+
+
+<!-- Search Container -->
+<div class="">
+<form method="GET" action id="jobSearchForm">
+    {% csrf_token %}
+    <div class="form-row">
+    <h1>{% trans "Search" %} </h1> 
+    <div class="mb-2 d-flex">
+        {{form.keyword}}
+        <button type="submit" class="btn btn-search py-1"><i class="bi bi-search"></i></button>
+    </div>
+    </div>
+    <div id="advancedFilters" style="display: none">
+    <div class="form-row">
+        <div class="mb-2">{{form.province}}</div>
+        <div class="mb-2">{{form.category}}</div>
+        <div class="mb-2">{{form.employment_type}}</div>
+        <div class="mb-2">{{form.gender}}</div>
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="mb-2 d-flex gap-2">
+        <button type="button" class="btn btn-secondary mb-1" id="toggleAdvancedBtn">{% trans "Filters" %}</button>
+        <a href="{% url 'jobs:main_page' %}" class="btn btn-secondary mb-1">{% trans "Reset" %}</a>
+        <button type="submit" class="btn btn-search mobile mb-1"><i class="bi bi-search"></i></button>
+    </div>
+    </div>
+</form>
+</div>
+
+
+<script>
+  document.getElementById("toggleAdvancedBtn").addEventListener("click", function () {
+    var advancedFilters = document.getElementById("advancedFilters");
+    if (advancedFilters.style.display === "none") {
+      advancedFilters.style.display = "block";
+      this.textContent = "{% trans 'Less' %}";
+    } else {
+      advancedFilters.style.display = "none";
+      this.textContent = "{% trans 'Filters' %}";
+    }
+  });
+</script>

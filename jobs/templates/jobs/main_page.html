@@ -1,0 +1,31 @@
+{% extends 'jobs/jobs_base.html' %}
+{% load i18n %}{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'jobs/css/main_page.css' %}" />
+{% endblock head %}
+
+
+{% block content %}
+
+<div class="main-container container col-md-8">
+  <div class="row py-4">
+    {% include 'jobs/search_component.html' %}
+  </div>
+  
+  <div class="row">
+      <h2 class="section-title">{% trans "Jobs" %}</h2>
+      <div class="row row-cols-auto">
+      {% for job in jobs %}
+        {% include 'jobs/post_card.html' %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="row">
+    {% include 'jobs/pagination_component.html' %}
+  </div>
+</div>
+
+<script src="{% static 'jobs/js/main_page.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,58 @@
+<!-- job_details.html -->
+{% extends 'jobs/jobs_base.html' %}
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'jobs/css/job_detail_page.css' %}">
+{% endblock head %}
+{% load i18n %}
+{% block content %}
+
+
+
+    <section class="col-12 d-flex justify-content-center">
+        <div class="col-8 my-5 gap-2">
+            <h1>{{job.title }}</h1>
+            <div class="job-details">
+                <p><i class="bi bi-geo-alt-fill icon mx-2"></i><strong>{% trans "Location" %}:</strong> {{ job.city }}, {{ job.province }}, {{ job.country }}</p>
+                <p><i class="bi bi-building icon mx-2"></i><strong>{% trans "Organization" %}:</strong> {{ job.organization }}</p>
+                <p><i class="bi bi-tag icon mx-2"></i><strong>{% trans "Category" %}:</strong> {{ job.category }}</p>
+                <p><i class="bi bi-people icon mx-2"></i><strong>{% trans "Employment Type" %}:</strong> {{ job.employment_type }}</p>
+            </div>
+       
+            <hr>
+            <div class="job-info-box mt-3">
+                <h4>{% trans "Job Details" %}</h4>
+                <div class="job-details">
+                    <p><i class="bi bi-cash icon mx-2"></i><strong>{% trans "Salary" %}:</strong> {{ job.salary }}</p>
+                    <p><i class="bi bi-calendar-check icon mx-2"></i><strong>{% trans "Contract Duration" %}:</strong> {{ job.contract_duration }}</p>
+                    <p><i class="bi bi-people icon mx-2"></i><strong>{% trans "Gender" %}:</strong> {{ job.gender }}</p>
+                    <p><i class="bi bi-chat-dots icon mx-2"></i><strong>{% trans "Language" %}:</strong> {{ job.language }}</p>
+                    <p><i class="bi bi-person icon mx-2"></i><strong>{% trans "Years Of Experience" %}:</strong> {{ job.years_of_experience }}</p>
+                    <p><i class="bi bi-book icon mx-2"></i><strong>{% trans "Education" %}:</strong> {{ job.education }}</p>
+                    <p><i class="bi bi-clock icon mx-2"></i><strong>{% trans "Close date" %}:</strong> {{ job.close_date | date:"Y-m-d" }}</p>
+                    <p><i class="bi bi-calendar-plus icon mx-2"></i><strong>{% trans "Created Date" %}:</strong> {{ job.created_date | date:"Y-m-d" }}</p>
+                    <p><strong><i class="bi bi-credit-card-fill icon mx-2"></i>{% trans "Credit:" %}</strong> {{ job.credit }}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-6">
+                <div class="job-info-box">
+                    <h4>{% trans "Full Job Description" %}</h4>
+                    <p>{{ job.description | safe }}</p>
+                </div>
+                <hr>
+                <div class="job-info-box">
+                    <h4>{% trans "Submission Guideline" %}</h4>
+                    <p>{{ job.submission_guideline | safe }}</p>
+                </div>
+                <div class="job-info-box">
+                    
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+{% endblock %}
