@@ -3,6 +3,7 @@
 __pycache__/
 db.sqlite3
 .env
+.gitignore
 
 # Static Files 
 staticfiles/
@@ -10,3 +11,6 @@ media/
 
 # IDES 
 .vscode/
+employenv/
+
+Things to Do.md
