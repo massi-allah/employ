@@ -1,0 +1,61 @@
+
+
+
+h1 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.6;
+    margin: 0;
+}
+h4 {
+    font-weight: 500;
+}
+
+
+.job-info {
+    margin-top: 10px;
+    padding: 20px 40px;
+}
+
+.job-info h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.job-info p {
+    margin-top: 10px;
+    color: var(--accent-color);
+}
+
+/* .apply-button {
+    margin-top: 20px;
+    text-align: center;
+} */
+
+/* .apply-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+} */
+
+/* .apply-button a:hover {
+    background-color: var(--primary-color);
+} */
+
+.sticky-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px; /* Adjusted to 100px from the top */
+    z-index: 1000;
+    background-color: #f4f4f4;
+    border-radius: 8px 8px 0 0;
+    padding: 20px 40px;
+    border-bottom: 1px solid black;
+}

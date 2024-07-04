@@ -83,8 +83,10 @@ MIDDLEWARE = [
 
     # Third party
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Crossheaders
 # CORS_ALLOW_METHODS = [

@@ -1,0 +1,18 @@
+* {
+    font-family: 'Roboto', sans-serif !important;
+}
+a {
+    text-decoration:none !important;    
+}
+/* -------------------------- Main ----------------------------- */
+#main {
+    margin-top: 60px;
+    padding: 0px 0px;
+    transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+    #main {
+        padding: 20px;
+    }
+}
