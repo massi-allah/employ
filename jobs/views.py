@@ -79,8 +79,8 @@ def mainpage(request):
         form = JobSearchForm()
 
     # Translate job listings
-    for job in job_listings:
-        translateJobModel(job)
+    # for job in job_listings:
+    #     translateJobModel(job)
 
     # Paginate job listings
     paginator = Paginator(job_listings, 21)
@@ -98,5 +98,5 @@ def mainpage(request):
 
 def job(request, id):
     item = Job.objects.get(job_id=id)
-    translateJobModel(item)
+    # translateJobModel(item)
     return render(request, 'jobs/job_detail_page.html', {'job': item})

@@ -8,6 +8,8 @@ db.sqlite3
 # Static Files 
 staticfiles/
 media/
+static/
+jobs/static/
 
 # IDES 
 .vscode/
