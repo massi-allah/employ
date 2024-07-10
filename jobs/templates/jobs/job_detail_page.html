@@ -7,52 +7,208 @@
 {% load i18n %}
 {% block content %}
 
-
-
-    <section class="col-12 d-flex justify-content-center">
-        <div class="col-8 my-5 gap-2">
-            <h1>{{job.title }}</h1>
-            <div class="job-details">
-                <p><i class="bi bi-geo-alt-fill icon mx-2"></i><strong>{% trans "Location" %}:</strong> {{ job.location }}</p>
-                <p><i class="bi bi-building icon mx-2"></i><strong>{% trans "Organization" %}:</strong> {{ job.organization }}</p>
-                <p><i class="bi bi-tag icon mx-2"></i><strong>{% trans "Category" %}:</strong> {{ job.category }}</p>
-                <p><i class="bi bi-people icon mx-2"></i><strong>{% trans "Employment Type" %}:</strong> {{ job.employment_type }}</p>
-            </div>
-       
-            <hr>
-            <div class="job-info-box mt-3">
-                <h4>{% trans "Job Details" %}</h4>
-                <div class="job-details">
-                    <p><i class="bi bi-cash icon mx-2"></i><strong>{% trans "Salary" %}:</strong> {{ job.salary }}</p>
-                    <p><i class="bi bi-calendar-check icon mx-2"></i><strong>{% trans "Contract Duration" %}:</strong> {{ job.contract_duration }}</p>
-                    <p><i class="bi bi-people icon mx-2"></i><strong>{% trans "Gender" %}:</strong> {{ job.gender }}</p>
-                    <p><i class="bi bi-chat-dots icon mx-2"></i><strong>{% trans "Language" %}:</strong> {{ job.language }}</p>
-                    <p><i class="bi bi-person icon mx-2"></i><strong>{% trans "Years Of Experience" %}:</strong> {{ job.years_of_experience }}</p>
-                    <p><i class="bi bi-book icon mx-2"></i><strong>{% trans "Education" %}:</strong> {{ job.education }}</p>
-                    <p><i class="bi bi-clock icon mx-2"></i><strong>{% trans "Close date" %}:</strong> {{ job.close_date | date:"Y-m-d" }}</p>
-                    <p><i class="bi bi-calendar-plus icon mx-2"></i><strong>{% trans "Created Date" %}:</strong> {{ job.created_date | date:"Y-m-d" }}</p>
-                    <p><strong><i class="bi bi-credit-card-fill icon mx-2"></i>{% trans "Credit:" %}</strong> {{ job.credit }}</p>
-                </div>
-            </div>
-            <hr>
-            <div class="col-lg-6">
-                <div class="job-info-box">
-                    <h4>{% trans "Full Job Description" %}</h4>
-                    <p>{{ job.description | safe }}</p>
-                </div>
-                <hr>
-                <div class="job-info-box">
-                    <h4>{% trans "Submission Guideline" %}</h4>
-                    <p>{{ job.submission_guideline | safe }}</p>
-                </div>
-                <div class="job-info-box">
-                    
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-2">
+                <div class="listing-detail">
+                    <img class="org-logo" src="{% static 'asset/logo.png' %}" alt="" srcset="">
+                    <h1 class="text-center">{{ job.title }}</h1>
+                    <p class="org">{{job.organization}}</p>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>{{ job.location }}</p>
+                    <p><i class="bi bi-calendar-check-fill me-2"></i>{{ job.created_date | date:"F d, Y" }}<i class="bi bi-alarm-fill mx-2"></i>{{ job.close_date }}</p>
+                </div>                
             </div>
         </div>
 
-    </section>
+        <div class="row">
+            <div class="col d-flex justify-content-center mt-3 w-100">
+                <button class="btn share-btn" onclick="shareJob()">
+                    <i class="bi bi-share-fill"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Type, Location, Level, Salary -->
+        <div class="row my-4">
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-person-fill me-2"></i>Gender</h6>
+                        <p class="text-muted">{{ job.gender }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-flag-fill me-2"></i>Nationality</h6>
+                        <p class="text-muted">{{ job.nationality }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-briefcase-fill me-2"></i>Type</h6>
+                        <p class="text-muted">{{ job.employment_type }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-currency-dollar me-2"></i>Salary</h6>
+                        <p class="text-muted">{{ job.salary }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-person-badge-fill me-2"></i>Vacancy No</h6>
+                        <p class="text-muted">{{ job.vacancy_number }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-people-fill me-2"></i>Counts</h6>
+                        <p class="text-muted">{{ job.no_of_jobs }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-calendar-fill me-2"></i>Contract Duration</h6>
+                        <p class="text-muted">{{ job.contract_duration }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-translate me-2"></i>Language</h6>
+                        <p class="text-muted">{{ job.language }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-translate me-2"></i>Years Of Experience</h6>
+                        <p class="text-muted">{{ job.years_of_experience }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6 col-md-6 my-3">
+                <div class="d-flex w-100 h-100">
+                    <div class="job-card px-3">
+                        <h6><i class="bi bi-tags-fill me-2"></i>Category</h6>
+                        {% for category in job.category.all %}
+                        <p class="text-muted">{{ category }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- About Organization -->
+        <div class="row my-4">
+            <h2>About Organization</h2>
+            <p>{{job.about_organization}}</p>
+        </div>
+
+        <!-- Description -->
+         <div class="row my-4">
+            <h2>Description</h2>
+            <p>{{job.description}}</p>
+        </div>
+
+        <!-- Education -->
+        <div class="row my-4">
+            <h2>Education</h2>
+            <p>{{job.education}}</p>
+        </div>
+
+        <!-- Job Requirements -->
+        <div class="row my-4">
+            <h2>Job Requirements</h2>
+            <p>{{job.job_requirements}}</p>
+        </div>
+
+        <!-- Submission Guidline -->
+        <div class="row my-4">
+            <h2>Submission Guidline</h2>
+            <p>{{job.submission_guideline}}</p>
+        </div>
+
+        
+        <!-- Submission Email -->
+        <div class="row my-4">
+            <h2>Submission Email</h2>
+            <p>{{job.submission_email}}</p>
+        </div>
+    </div>
 
 
+    <script>
+        function shareJob() {
+            const jobUrl = window.location.href;  // Get the current URL
+            console.log('Job URL:', jobUrl);
+
+            if (navigator.share) {
+                // Use the Web Share API if available
+                navigator.share({
+                    title: 'Check out this job!',
+                    url: jobUrl
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch((error) => {
+                    console.error('Error sharing:', error);
+                    alert('Sharing failed. Please try copying the link manually.');
+                });
+            } else if (navigator.clipboard) {
+                // Use the Clipboard API if available
+                navigator.clipboard.writeText(jobUrl).then(() => {
+                    alert('Job link copied to clipboard!');
+                }).catch((error) => {
+                    console.error('Could not copy text:', error);
+                    fallbackCopyTextToClipboard(jobUrl);
+                });
+            } else {
+                // Fallback method for older browsers
+                fallbackCopyTextToClipboard(jobUrl);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';  // Prevent scrolling to bottom of page in MS Edge.
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert('Job link copied to clipboard!');
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+                alert('Copying to clipboard failed. Please copy the link manually.');
+            }
+            document.body.removeChild(textArea);
+        }
+        </script>
 
 {% endblock %}
